@@ -115,6 +115,32 @@ Design a function that takes a file and a file name and returns the file data wi
                 (search-for-listoffiles (rest lof) n))]))
 ```
 
+### OptimizedSearchForFile
+- Using `local` to avoid *recomputation* of the same values solves the performance issue in the previous implementation.
+- The helper function `search-for-listoffiles` does not need to be visible to the rest of the program. This can be *encapsulated* using `local`, so that only `find-file` is visible to the rest of the program.
+```racket
+;; File String -> Integer or false
+;; ListofFiles String -> Integer or false
+;; Purpose: To find the file with the given name in the file system
+(check-expect (find-file F2 "file1") false) ; "file1" is not present in F2
+(check-expect (find-file F1 "file1") 1) ; "file1" is present in F1
+(check-expect (find-file F6 "file1") 1) ; "file1" is present in F6
+
+(local [(define ( search-for-file f n)
+            (if (string=? n (file-name f))
+                (file-data f)
+                (search-for-listoffiles (file-subs f) n)))
+
+        (define ( search-for-listoffiles lof n)
+            (cond [(empty? lof) false]
+                  [else
+                    (local [define (search-for-file (first lof) n)]
+                       (if (not (false? search)) ; if the file is found
+                        search
+                        (search-for-listoffiles (rest lof) n)))]))]
+    (search-for-file f n))
+```
+
 
 ---
 

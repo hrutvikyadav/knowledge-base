@@ -121,6 +121,51 @@ Used for the following reasons:
 3. to handle a *knowledge domain shift*
 4. to ==operate on arbitrary sized data **all at once**==
 
+## Refactoring
+Techniques to improve structure of code without changing its behavior.
+
+### Locally scoped definitions
+
+- used to encapsulate definitions to avoid name conflicts i.e. #encapsulation
+  > Example [[Mutually Referential Data#OptimizedSearchForFile|OptimizedSearchForFile]]
+- used to avoid recomputation of values i.e. #performance-optimization
+  > Example [[Mutually Referential Data#OptimizedSearchForFile|OptimizedSearchForFile]]
+- prevents conflicting variable names i.e. #variable-shadowing
+
+### Abstraction
+It is a technique to reduce redundancy in code by creating a new function that captures the commonality between two or more functions and abstracts away the details 
+> [!info] For abstract functions, we need to follow the recipe backwards, as we arrive at the function first and then write the signature.(In modern languages, the `lsp` will show the signature upon hovering over the function name)
+
+Goals of the module:
+- Be able to identify 2 or more functions that are candidates for abstraction.
+- Be able to design an abstract function starting with 2 or more highly repetitive functions (or expressions).
+- Be able to design an abstract fold function from a template.
+- Be able to write signatures for abstract functions.
+- Be able to write signatures that use type parameters.
+- Be able to identify a function which would benefit from using a built-in abstract function
+- Be able to use built-in abstract functions
+
+#### How to abstract
+1. Identify the common/repeated code in the functions.
+2. Identify the parts that vary between the functions.
+3. Create a new function that captures the commonality and takes the varying parts as arguments.
+  > [!tip] The varying part could be a function, in that case the new function is a #higher-order-function. This can be implemented in a language that supports #first-class-functions.
+
+  > [!info] Some abstract functions are built-in functions in the language.
+
+  > [!tip] It is common for the function passed into a higher-order function to be a lambda function that is bound to some variable in the enclosing scope. i.e. #closure
+
+  > [!info] Abstract functions can be produced directly from templates. This can be wonderfully useful, especially for types involving [[Mutually Referential Data]] *(here, 2 or more closures come into play depending upon the number of types involved)*.
+  > Example [[Abstraction#Fold Function]]
+
+## Generative Recursion
+
+Different kind of recursion in which the *data passed to the recursive call is ==generated==*, rather than being a part of the data passed to the current call
+> Instead of passing something like (rest lox) to the recursive call, the value is somehow generated from the current value.
+
+## Search
+
+Expands on generative recursion
 
 ---
 

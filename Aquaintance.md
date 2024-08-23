@@ -90,6 +90,7 @@ tags: []
 ## Basic values and data 
 ### The abstract state machine 
 ### Basic types 
+[[Basic types]]
 ### Specifying values 
 ### Implicit conversions 
 ### Initializers 

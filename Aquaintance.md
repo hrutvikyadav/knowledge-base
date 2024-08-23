@@ -98,7 +98,16 @@ tags: []
 ### Binary representions 
 ### Summary
 ## Derived data types 
+> [!info] Derived data types are created by combining basic types. 4 strategies are used to create derived data types:
+> Of these 4, 2 are called **aggregate types** because they combine ==multiple instances== of *one or more* basic types.
+> - Arrays - they combine multiple instances of the *one/same* basic type
+> - Structures - they combine multiple instances of *one or more* basic types
+> The other 2 are more involved  and are suitable for complex use cases:
+> - Pointers - they point to an object in memory
+> - Unions - These can be used to store objects of different types in the same memory location. They are not used as often as the other 3 and require a deep understanding of the C memory model. Hence they are discussed later
+>> [!hint] There is also a 5th strategy that is used to introduce new names for existing types using the `typedef` keyword. This is called **type aliasing**.
 ### Arrays 
+[[Arrays]]
 ### Pointers as opaque types 
 ### Structures 
 ### New names for types: type aliases 

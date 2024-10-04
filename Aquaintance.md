@@ -113,6 +113,17 @@ tags: []
 ### New names for types: type aliases 
 ### Summary 
 ## Functions 
+> [!info] Functions are one of the ways which C provides for an unconditional transfer of control. They are used to encapsulate code and make it reusable across rest of the codebase.
+> - They avoid code repetition
+> - They make code more readable and maintainable
+> - They allow for code reuse
+> - Use of functions decreases compile time as the same code(function calls) is not compiled again and again but only once(defining the function)
+> - They provide clear interfaces
+> - Functions provide a natural way to formulate aglorithms that implement a `stack` to store intermediate results and values
+>> [!note] In addition to functions, C also has some other means to transfer control unconditionaly:
+>> - `goto` statement
+>> - `exit`, `_Exit`, `abort` and `quick_exit` functions terminate the program
+>> - `setjmp` and `longjmp` functions allow for non-local control transfer for example to the calling context
 ### Simple functions 
 ### main is special 
 ### Recursion 

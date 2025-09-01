@@ -50,3 +50,23 @@ It is easier to keep track of the stack than the heap.
 Allocation and Deallocation happens automatically, no need to manually intervene.
 Stack keeps growing and shrinking as data gets pushed and popped.
 It cannot grow beyond a limit, so keep and eye out for stack overflow scenarios.
+
+### Heap
+It is a hierarchical data structure, a large pool of memory available for dynamic use (see [[Anatomy of a process#Heap|Stack in OS]])
+We can allocate, deallocate as needed.
+Memory needs to be managed manually.
+When using heap, look out for memory leaks(forgot to free) and double free(attempt to free memory that is either not allocated *or* allocated to someone else) errors.
+Has more overhead than stack.
+
+### When to use stack v/s heap
+- Use heap if:
+    - you need to allocate a large block of memory for a huge data structure.
+    - you need to reference a variable for a long time.
+    - you need dynamic memory i.e. dealing with arbitrary data.
+- Use stack if:
+    - you need many variables for a small lifetime of the entire program, more specifically if the variable lifetime is tied to certain function.
+    - size of data is known beforehand.
+
+> [!tip]
+> Whenever possible, try to use stack
+> If more fine tuned control is needed go for the heap

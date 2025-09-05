@@ -61,3 +61,13 @@ Can be used with variables and functions
    When used with functions, it limits the scope/visibility of that function to a single file
 
 ## Register
+We can add the `register` specifier to a variable to indicate to the compiler that we want to store this variable in a CPU register.
+> [!warn]
+> Even though such a specifier is given, the compiler can take the decision to store this variable in a register or not, depending upon certain factors.
+> In some cases, the compiler will even apply optimizations to store some variables in registers even when the `register` specifier is not given.
+
+# Challenges
+<!-- TODO: fill up -->
+1.
+2.
+3.

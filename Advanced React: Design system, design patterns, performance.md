@@ -10,6 +10,7 @@ tags: []
 # Intro
 
 # Design Patterns: Layout components
+<!-- TODO: revise lists -->
 
 # Design Patterns: Container components
 

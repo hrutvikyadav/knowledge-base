@@ -122,3 +122,14 @@ For details refer to ./Resources/Section3/S2L9.pdf
 ## Lab session 1 General and Special Registers
 ## Lab session 2 xPSR and Control Registers
 
+# Cortex-M Exception Model, Vector Table and VTOR
+
+## Exception Model and Vector Table
+...
+
+## Vector Table Offset Register
+Used to change where the Vector Table is located
+- Useful when we want to execute custom handlers. We modify the vector table so that we can run our special hardfault handler i.e. make the harfault handler in the vector table point to some other location where we have our custom handler.
+- Faster access if table is moved to SRAM instead of Flash memory.
+- Dynamically change exception handlers based on program state.
+

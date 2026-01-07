@@ -178,7 +178,7 @@ class diagram that represents this data definition looks like this:
               +-------------+
 ```
 > Note the two kinds of arrows here: Person and Unknown both implement IAT, while Person also has two IAT fields.
-> Both the arrows represent the 2 relationships- **is-a**(denotes union), **has-a**(denotes self-reference)
+> Both the arrows represent the 2 relationships- **is-a**(denotes union), **has-a**(denotes self-reference or reference)
 
 ```java
 // to represent an ancestor tree

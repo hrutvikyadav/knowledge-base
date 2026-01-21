@@ -5,7 +5,7 @@ aliases:
 tags: []
 ---
 
-# SQL
+# SQL SELECT queries
 
 ## FETCH Data from database tables
 
@@ -79,3 +79,24 @@ FROM emp_tab;
 - work with group of rows
 - return one result per group
 
+## Query multiple tables
+
+
+# CREATE new tables
+> [!warn]
+> CREATE is a DDL(data definiton language) statement and it will auto commit onece executed; meaning it **CANNOT be reverted**
+
+When creating a table, if the schema does not belong to the connected user we need to specify the schema name as well.
+
+We can specify constrants like PRIMARY KEY, FOREIGN KEY, NOT NULL while creating the table or after it is created.
+
+## ALTER table schema
+Similar to CREATE, ALTER is a DDL statement that auto commits
+
+## COMMIT and ROLLBACK
+These are TCL (transaction control language)
+1. COMMIT
+2. ROLLBACK
+3. SAVEPOINT
+
+# MODIFY existing tables

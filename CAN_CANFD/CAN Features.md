@@ -31,7 +31,39 @@ We want to consider the speed with which these frames will travel on the CAN bus
 > - Error handling and retries
 
 ## CAN Data 
+CAN frame has 2 parts
+- PCI(protocol control information)
+- Data
+
+When we are sending frames over the CAN network, it is not enough to simply send the data because we need to know some metadata like who is it intended for, what it the length and so on. This metadata is encoded in the PCI part of the frame. ^PCI
+
+As per the CAN protocol ( rules ) the maximum data we can send per frame is 8bytes max i.e. we can send less than that as well.
+However, we cannot send *bits - it has to be bytes* (2 bits ❌ 1 byte ✔️)
+> [!info]
+> If the use case needs data > 8 bytes then we can use other protocols like CANtp (transmission layer protocol). It allows larger data to be split into frames which can be sent over the network.
+
+Another thing to consider is that if we have an odd number of bits to send, then we send remaining as dummy bits.
+Ex. to send - 10 bits; which does not fit in 1 byte but does fit in 2 bytes along with some bits which are rendered irrelevant. These are sent as dummy bits(6 in this case) and our **application must be aware of this fact**
+
+The CAN Rx will know how many bytes were sent via the DLC field in the [[#^PCI|PCI]]
+
 ## CAN Bus
+The physical CAN bus is implemented as a twisted pair cable terminated on both ends with a fixed 120 Ohm resistor. One wire is CAN low and other is CAN high
+It is a serial communication bus which means bits will be transmitted one after another. The termination resistor provides impedance matching???
+This one byt one bit transmission is facilitated with the **differential voltage** i.e. if we want to send logical high (1) the delta V will be 0V(Dominant), and for logical low(0) delta V will be 2V(Recessive)
+
+> [!hint]
+> Logic 0 is called dominant bit because in case of multiple node in the network, if two ECU try to transmit over the bus, assuming one is sending logic 1 and other is sending logic 0, the bus will first take the logic 0.
+> This helps prioritize which ECU will transmit in case of conflict.
+^dominant-recessive-concept
+==This will come up lateer in error handling and bus arbitration==
+
+<!-- TODO: what will happen if 2 or more ECU try to send logic 1??? -->
+
+Because of the differential voltage and twisted pair CAN bus is highly immune to electrical noise.
+- Twisted pair caused the same noise(if any) to be added to both the wires i.e. VH and VL.
+- And due to differential voltage the noise from both VH and VL cancels out.
+
 ## CAN Logic
 ## CAN Controllers and transreceivers
 ## CAN Network Topology

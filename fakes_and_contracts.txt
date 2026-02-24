@@ -1,0 +1,3 @@
+Fakes are used when statefullness is needed (cant do this in other test doubles i.e. stubs, spies and mocks)
+- but they are still making assumptions about the dependencies - external apis, databases and so on, which are bound to change in the real world.
+Contracts are to validate that our system integrates with the fake as well as real dependencies in the same way. 

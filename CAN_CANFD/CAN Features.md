@@ -64,9 +64,17 @@ Because of the differential voltage and twisted pair CAN bus is highly immune to
 - Twisted pair caused the same noise(if any) to be added to both the wires i.e. VH and VL.
 - And due to differential voltage the noise from both VH and VL cancels out.
 
+The termination resistor is for impedance matching purpose.
+As signals travel through the twisted pair cables there will be some pushback. These reflective waves will interfere with the existing waves in the cables and to combat this we need impedance matching.
+
 ## CAN Logic
-## CAN Controllers and transreceivers
+### CAN Controllers and transreceivers
+> [!warn]
+> We saw how CAN handles logic 1 and  logic 0 but this is not how microcontrollers work with logic 0 and 1. Instead microcontrollers use TTL logic which means VL is 0V and VH is 3.3V or 5V depending on the microcontroller. But both need to talk to each other.
+> For this purpose there needs to be a middleman that can bridge this gap by translating from CAN logic to TTL and vice versa. This middleman is the CAN Transceiver. CAN controller will then work with TTL, do some processing and send the data to the Microcontroller.
+
 ## CAN Network Topology
+As for how the ECUs and the CAN bus form a network, 2 pins from each ECU is connected to the CAN high and CAN low of the twisted pair. Multiple such ECUs are connected across the CAN bus which together forms the CAN network. Baud rate is configured for the entire network (It is configured for each ECU but each ECU in a network has to adhere to the same Baud rate decided for the entire network.
 
 # Transcript
 
